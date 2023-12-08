@@ -10,7 +10,7 @@ export const environment = {
   apiChartUrl: "https://v6.exchangerate-api.com/v6/1f888faf398c63ecab7a436d/history/",
   apiKey: "a0774303cc149f98c2d51a33a6727ec5",
   apiKeyForConvert: "9ca75a25dd98dec44409e62f",
-  base: "&base=EUR",
+  base: "EUR",
 };
 
 /*

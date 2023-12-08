@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MiddlewareService } from './middleware.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { forkJoin } from 'rxjs';
+import { BehaviorSubject, forkJoin } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class ApiService {
   popularCurrencies: string[] = ['USD', 'EUR', 'JPY', 'GBP', 'AUD', 'CAD', 'CHF', 'CNY', 'EGP'];
   popularCurrenciesConverted: any[] = [];
   requests: any[]=[];
-
+  popularCurrenciesConvertedSubject:BehaviorSubject<any[]>=new BehaviorSubject<any[]>([])
   constructor(private middlewareService:MiddlewareService,private http:HttpClient) {
 
   }
@@ -45,7 +45,8 @@ export class ApiService {
 
           }
           return this.popularCurrenciesConverted;
-        }
+        },
+        complete:()=> this.popularCurrenciesConvertedSubject.next(this.popularCurrenciesConverted)
       }
     );
 
