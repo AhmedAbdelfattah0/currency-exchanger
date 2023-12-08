@@ -111,7 +111,7 @@
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  min-height: 700px;
+  min-height: 500px;
   background-color: $deep-red;
 
   @include breakpoint(md) {
@@ -122,10 +122,9 @@
     border: 1px solid $pure-white;
     border-radius: 10px;
     border: 1px solid $of-white;
-    flex: 0 0 calc(33.33% - 20px);
+    flex: 1 0 calc(30.33% - 20px);
     background-color: $of-white1;
-    padding: 10px;
-    margin: 10px;
+     margin: 10px;
     text-align: center;
 
     @include breakpoint(md) {
