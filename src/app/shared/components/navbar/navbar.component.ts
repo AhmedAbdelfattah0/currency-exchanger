@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
+  isScrolling = false;
+  @HostListener('window:scroll', [])
+  onScroll() {
+    this.isScrolling = window.scrollY > 0;
+  }
   constructor() { }
 
   ngOnInit(): void {

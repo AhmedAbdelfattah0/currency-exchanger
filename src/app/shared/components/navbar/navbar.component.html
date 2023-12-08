@@ -1,1 +1,9 @@
-<p>navbar works!</p>
+<header class="sticky-header" [ngClass]="{'scrolling': isScrolling}">
+  <div class="logo">
+    <img src="../../../../assets/image/header/bmp-logo.png" alt="Logo">
+  </div>
+  <nav class="nav-links">
+    <a routerLink="/details" routerLinkActive="active">EUR-USD Details</a>
+    <a routerLink="/details" routerLinkActive="active">EUR-GBP Details</a>
+  </nav>
+</header>

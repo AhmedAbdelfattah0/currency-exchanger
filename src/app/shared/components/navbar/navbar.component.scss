@@ -1,0 +1,68 @@
+
+@import '../../../../styles.scss';
+.sticky-header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:$of-white1;
+  padding: 10px;
+  z-index: 9999;
+  @include breakpoint(sm){
+    height: 60px;
+    align-items:center;
+    padding: 10px;
+  }
+
+  .logo{
+    @include breakpoint(sm){
+      width: 14rem;
+      padding: 10px;
+    }
+  img{
+    width: 10rem;
+    @include breakpoint(sm){
+      width: 8rem;
+
+    }
+  }
+}
+nav{
+  @include breakpoint(sm){
+    margin-top: 3rem;
+  }
+}
+.nav-links {
+  display: flex;
+  gap: 10px;
+  @include breakpoint(sm){
+    flex-direction: row;
+    align-items: center;
+  }
+  a {
+    padding: 8px 16px;
+    background-color: #871e35;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    @include breakpoint(sm){
+      font-size: 12px;
+      padding: 4px 12px;
+      margin-bottom: 45px;
+    }
+  }
+}
+
+}
+.scrolling {
+  height: 60px;
+  transition: height 0.3s ease;
+  .logo{
+    width: 14rem;
+    img{
+      width: 8rem;
+    }
+  }
+
+}
