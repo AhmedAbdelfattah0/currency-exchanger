@@ -6,6 +6,25 @@
 
   .midd-sec {
     margin: auto;
+    .convert-btn {
+        background-color: $blue;
+
+        border: none;
+        color: $pure-white;
+        text-transform: uppercase;
+        font-family: inherit;
+        font-size: 1.2rem;
+        padding: 0.8rem 1.4rem;
+        margin-top: 1.6rem;
+        cursor: pointer;
+        display: block;
+      }
+
+      .convert-btn:disabled{
+        background-color: $gray1;
+        color: $dark;
+
+      }
   }
 
   .top-sec,
@@ -18,7 +37,7 @@
     }
     >div {
       margin-bottom: 2rem;
-      flex: 0 0 calc(25% - 20px);
+      flex: 0 0 calc(25% - 50px);
     }
 
     label {
@@ -93,4 +112,3 @@
     }
   }
 }
-
