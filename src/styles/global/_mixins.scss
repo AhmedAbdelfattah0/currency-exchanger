@@ -1,0 +1,32 @@
+@import '../global/_variables';
+
+  @mixin xlarge-device {
+    @media (min-width: #{$xlarge-device-h}) {
+      @content;
+    }
+  }
+
+
+
+  // break point mixing
+  @mixin breakpoint($point) {
+    @if $point == xl {
+      @media (max-width: $xlarge-device-l) { @content; }
+    }
+    @else if $point == lg {
+      @media (max-width: $large-device-l) { @content; }
+    }
+    @else if $point == md {
+      @media (max-width: $moderate-device-l)  { @content; }
+    }
+    @else if $point == sm {
+      @media (max-width: $small-device-l)  { @content; }
+    }
+    @else if $point == xs {
+      @media (max-width: $msmall-device-h)  { @content; }
+    }
+    // handling for below 350px screens
+    @else if $point == xxs {
+      @media (max-width: $xsmall-device-l)  { @content; }
+    }
+  }
