@@ -1,0 +1,50 @@
+    <!-- form -->
+
+    <form [formGroup]="conversionForm" (ngSubmit)="convertCurrency()">
+      <div class="converter-inputs">
+        <div class="top-sec">
+          <div class="from-amount">
+            <label for="">Amount</label>
+            <input type="number" class="form-control" placeholder="0" min="1" value="1" formControlName="amount" required>
+          </div>
+          <div class="from-currency">
+            <label for="">From</label>
+            <select id="currencySelect" [(ngModel)]="fromSelectedCurrency" formControlName="fromCurrency">
+              <option *ngFor="let symbol of symbols" [value]="symbol">
+                {{ symbol }}</option>
+            </select>
+          </div>
+          <div class="icon">
+            <button type="button" id="swap-btn">
+              <img src="assets/image/exchange.png">
+            </button>
+          </div>
+          <div class="to-currency">
+            <label for="">To</label>
+            <select id="currencySelect" [(ngModel)]="toSelectedCurrency" formControlName="toCurrency">
+              <option *ngFor="let symbol of symbols" [value]="symbol" >
+                {{ symbol }}</option>
+            </select>
+
+          </div>
+        </div>
+        <div class="midd-sec">
+          <button type="submit" id="convert-btn" [disabled]="conversionForm.invalid">Convert</button>
+        </div>
+        <div class="buttom-sec">
+          <div class="result-wrapper">
+            <p>
+              <span id="from-result">1 {{base_code}}</span>
+              =
+              <span id="to-result">{{conversion_rate}} {{target_code}}</span>
+            </p>
+          </div>
+          <div class="from-amount">
+            <label for="">Result</label>
+            <input  class="form-control" placeholder="0" readonly [value]="conversion_result" >
+          </div>
+        </div>
+        <div *ngFor="let currency of this.exchangeRates | keyvalue">{{currency.key}}-{{currency.value}}
+        </div>
+      </div>
+    </form>
