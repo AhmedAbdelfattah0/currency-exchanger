@@ -6,12 +6,14 @@ import { Injectable } from '@angular/core';
 export class MiddlewareService {
   convertCurrency:{url:string,headers:[]}
   getSymbols:{url:string,headers:[]}
+  mostPopularConverter:{url:string,headers:[]}
   constructor() {
     this.buildUrls()
    }
 
  private buildUrls() {
-    this.convertCurrency ={url:'convert',headers:[] }
+    this.convertCurrency ={url:'pair',headers:[] }
     this.getSymbols ={url:'symbols',headers:[] }
+    this.mostPopularConverter ={url:'pair',headers:[] }
   }
 }

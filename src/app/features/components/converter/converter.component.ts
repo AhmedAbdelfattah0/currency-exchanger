@@ -70,4 +70,15 @@ export class ConverterComponent extends BaseComponent implements OnInit {
         });
     }
   }
+
+  swap(){
+    let fromCurrency = this.conversionForm.get('fromCurrency')?.value;
+    let toCurrency = this.conversionForm.get('toCurrency')?.value;
+    [fromCurrency, toCurrency] = [toCurrency,fromCurrency];
+    this.conversionForm.get('fromCurrency')?.setValue(  fromCurrency)
+    this.conversionForm.get('toCurrency')?.setValue(  toCurrency)
+    if(this.conversionForm.get('amount')?.value){
+      this.convertCurrency()
+    }
+  }
 }

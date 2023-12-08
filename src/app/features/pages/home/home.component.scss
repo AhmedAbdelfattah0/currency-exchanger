@@ -38,16 +38,43 @@
     padding: 4rem 3rem;
     -webkit-box-shadow: 0 6px 6px -1px rgba(0, 0, 0, 0.2);
     box-shadow: 0 6px 6px -1px rgba(0, 0, 0, 0.2);
-    @include breakpoint(lg){
+
+    @include breakpoint(lg) {
       padding-top: 2rem;
       padding-bottom: 2rem;
       min-width: 635px;
+    }
+
+    @include breakpoint(md) {
+      min-width: 289px !important;
+
+      .converter-inputs {
+        .midd-sec {
+          margin: auto;
+        }
+
+        .top-sec,
+        .buttom-sec {
+          flex-direction: column;
+        }
+      }
 
     }
-    @include breakpoint(sm){}
+
+    @include breakpoint(sm) {
+      min-width: 289px !important;
+
+    }
+
+    @include breakpoint(xs) {
+      min-width: 190px !important;
+
+    }
+
+
     h2 {
       position: absolute;
-      top: -70px;
+      top: -100px;
       left: 50%;
       width: 100%;
       -webkit-transform: translateX(-50%);
@@ -59,11 +86,15 @@
       text-align: center;
       text-transform: uppercase;
       line-height: 1.4;
-      @include breakpoint(lg){
+
+      @include breakpoint(lg) {
         font-size: 1.6rem;
-        top: -100px;
       }
-      @include breakpoint(sm){}
+
+      @include breakpoint(sm) {
+        font-size: 1.2rem !important;
+        top: -54px !important
+      }
     }
 
     .back-wrapper {
@@ -83,6 +114,10 @@
   min-height: 700px;
   background-color: $deep-red;
 
+  @include breakpoint(md) {
+    flex-direction: column;
+  }
+
   div {
     border: 1px solid $pure-white;
     border-radius: 10px;
@@ -92,6 +127,14 @@
     padding: 10px;
     margin: 10px;
     text-align: center;
+
+    @include breakpoint(md) {
+      padding: 8rem;
+
+    }
+    @include breakpoint(sm) {
+      padding: 5rem;
+    }
 
     h2 {
       display: block;
@@ -112,48 +155,3 @@
   }
 }
 
-
-
-@media screen and (max-width: 769px) {
-
-  .wrapper {
-    .converter-wrapper {
-      min-width: 650px !important;
-    }
-
-    .converter-inputs {
-      .midd-sec {
-        margin: auto;
-      }
-
-      .top-sec,
-      .buttom-sec {
-        flex-direction: column;
-      }
-    }
-  }
-
-  .bottom-section {
-    flex-direction: column;
-
-    div {
-      padding: 8rem;
-    }
-  }
-}
-
-@media screen and (max-width: 500px) {
-
-  .converter-wrapper {
-    h2 {
-      font-size: 1.2rem !important;
-      top: -35px !important;
-    }
-  }
-
-  .bottom-section {
-    div {
-      padding: 5rem;
-    }
-  }
-}
