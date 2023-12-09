@@ -9,6 +9,7 @@ import { HomeComponent } from './features/pages/home/home.component';
 import { DetailsComponent } from './features/pages/details/details.component';
 import { ConverterComponent } from './features/components/converter/converter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChartComponent } from './features/components/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     HomeComponent,
     DetailsComponent,
-    ConverterComponent
+    ConverterComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
