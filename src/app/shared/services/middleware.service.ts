@@ -7,6 +7,7 @@ export class MiddlewareService {
   convertCurrency:{url:string,headers:[]}
   getSymbols:{url:string,headers:[]}
   mostPopularConverter:{url:string,headers:[]}
+  conventionHistory:{url:string,headers:[]}
   constructor() {
     this.buildUrls()
    }
@@ -15,5 +16,6 @@ export class MiddlewareService {
     this.convertCurrency ={url:'pair',headers:[] }
     this.getSymbols ={url:'symbols',headers:[] }
     this.mostPopularConverter ={url:'pair',headers:[] }
+    this.conventionHistory ={url:'history',headers:[] }
   }
 }
