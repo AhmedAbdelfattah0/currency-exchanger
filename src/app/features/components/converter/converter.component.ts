@@ -52,8 +52,15 @@ export class ConverterComponent extends BaseComponent implements OnInit, OnChang
   getSymbols() {
     this.apiService.getSymbols().pipe(takeUntil(this.ngUnSubscribe)).subscribe(
       (res:any) => {
-        let symbolsJson = Object.keys(res?.symbols);
-        this.symbols = symbolsJson;
+        // let symbolsJson = Object.keys(res?.symbols);
+        debugger
+        this.symbols = res?.symbols;
+
+        this.symbols= Object.entries(this.symbols).map(([key, name]) => {
+          return { key, name };
+        });
+        console.log(this.symbols);
+
         this.convertCurrency()
        },
 

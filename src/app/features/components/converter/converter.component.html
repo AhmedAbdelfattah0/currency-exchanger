@@ -10,8 +10,8 @@
           <div class="from-currency">
             <label for="">From</label>
             <select id="currencySelect" [(ngModel)]="fromSelectedCurrency" formControlName="fromCurrency">
-              <option *ngFor="let symbol of symbols" [value]="symbol">
-                {{ symbol }}</option>
+              <option *ngFor="let symbol of symbols; let i =index;" [value]="symbol.key" >
+                {{ symbol.name }}</option>
             </select>
           </div>
           <div class="icon">
@@ -22,8 +22,8 @@
           <div class="to-currency">
             <label for="">To</label>
             <select id="currencySelect" [(ngModel)]="toSelectedCurrency" formControlName="toCurrency">
-              <option *ngFor="let symbol of symbols" [value]="symbol" >
-                {{ symbol }}</option>
+              <option *ngFor="let symbol of symbols; let i =index;" [value]="symbol.key" >
+                {{ symbol.name }}</option>
             </select>
 
           </div>
