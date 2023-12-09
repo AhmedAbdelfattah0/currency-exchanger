@@ -1,6 +1,6 @@
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from './../../../shared/services/api.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BaseComponent } from 'src/app/base-components/base.component';
 import { takeUntil } from 'rxjs';
 
@@ -23,9 +23,11 @@ export class ConverterComponent extends BaseComponent implements OnInit {
   symbols: any;
   fromSelectedCurrency: string = 'EUR';
   toSelectedCurrency: string = 'USD';
+  @Output()toCurrencyEmitter:EventEmitter<any>= new EventEmitter()
   constructor(private formBuilder: FormBuilder, private apiService:ApiService) {
     super();
     this.getSymbols()
+    this.toCurrencyEmitter.emit(this.toSelectedCurrency)
 
   }
   conversionForm = new FormGroup({
@@ -54,6 +56,7 @@ export class ConverterComponent extends BaseComponent implements OnInit {
       let storeAmount = this.conversionForm.get('amount')?.value;
       let fromCurrency = this.conversionForm.get('fromCurrency')?.value;
       let toCurrency = this.conversionForm.get('toCurrency')?.value;
+      this.toCurrencyEmitter.emit(toCurrency)
       this.amount = storeAmount
       this.apiService
         .convertCurrency(fromCurrency, toCurrency, storeAmount)

@@ -1,0 +1,136 @@
+@import '../../../../styles.scss';
+
+.wrapper {
+  background-color: $pure-white;
+  border-radius: 0.4rem;
+  position: relative;
+  min-height: 792px;
+  width: 100%;
+
+  .bg-red {
+    position: absolute;
+    background-color: $deep-red;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 396px;
+  }
+
+  .bg-white {
+    position: absolute;
+    background-color: $pure-white;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 396px;
+  }
+
+  .converter-wrapper {
+    min-width: 900px;
+    background-color: $pure-white;
+    border-radius: 0.4rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 4rem 3rem;
+    -webkit-box-shadow: 0 6px 6px -1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 6px -1px rgba(0, 0, 0, 0.2);
+
+    @include breakpoint(lg) {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      min-width: 635px;
+    }
+
+    @include breakpoint(md) {
+      min-width: 289px !important;
+
+      .converter-inputs {
+        .midd-sec {
+          margin: auto;
+        }
+
+        .top-sec,
+        .buttom-sec {
+          flex-direction: column;
+        }
+      }
+
+    }
+
+    @include breakpoint(sm) {
+      min-width: 289px !important;
+
+    }
+
+    @include breakpoint(xs) {
+      min-width: 190px !important;
+
+    }
+
+
+    h2 {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      width: 100%;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+      color: $pure-white;
+      font-size: 2.4rem;
+      letter-spacing: 2px;
+      text-align: center;
+      text-transform: uppercase;
+      line-height: 1.4;
+
+      @include breakpoint(lg) {
+        font-size: 1.6rem;
+      }
+
+      @include breakpoint(sm) {
+        font-size: 1.2rem !important;
+        top: -54px !important
+      }
+    }
+
+    .back-wrapper {
+      text-align: end;
+    }
+  }
+
+
+
+
+}
+.chart-section{
+  padding: 10px;
+  background-color: $deep-red;
+  .chart{
+  background-color: $pure-white;
+  // width: 100%;
+  border: 1px solid $pure-white;
+  border-radius: 10px;
+  // padding: 10rem;
+  // min-height: 792px;
+  text-align: center;
+  @include breakpoint(lg){
+    padding: 0!important;
+    min-height: 350px;
+  }
+
+  @include breakpoint(md){
+    padding: 0!important;
+    min-height: 0;
+  }
+  }
+
+
+}
+.back-wrapper{
+  text-align: end;
+}
+

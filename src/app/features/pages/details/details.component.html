@@ -1,1 +1,20 @@
-<p>details works!</p>
+<div class="details-page">
+  <div class="wrapper">
+    <div class="bg-red"></div>
+    <div class="bg-white"></div>
+
+    <div class="converter-wrapper">
+      <h2>Currency Exchanger!</h2>
+      <app-converter (toCurrencyEmitter)="toCurrency=$event"></app-converter>
+      <div class="back-wrapper">
+        <a routerLink="/home">More Details &#8702;</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="chart-section">
+    <div class="chart">
+      <app-chart [toCurrency]="toCurrency"></app-chart>
+    </div>
+  </div>

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-
+ toCurrency:any
   constructor() { }
 
   ngOnInit(): void {
