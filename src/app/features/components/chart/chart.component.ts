@@ -1,15 +1,18 @@
 import { BaseComponent } from 'src/app/base-components/base.component';
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import Chart from 'chart.js/auto';
 import { environment } from 'src/environments/environment';
 import { ChartService } from 'src/app/shared/services/chart.service';
 import { takeUntil } from 'rxjs';
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 const MONTHS = [
   'January',
   'February',
@@ -31,10 +34,13 @@ const MONTHS = [
 })
 export class ChartComponent extends BaseComponent implements OnInit, OnChanges {
   @Input() toCurrency: any;
+  @Input() fromCurrency: any;
   data: any;
   chartValues: any[] = [];
-
-  constructor(private chartService: ChartService) {
+  myChart: Chart;
+  @Output()toCurrencyEmitter:EventEmitter<any>= new EventEmitter()
+  @Output()fromCurrencyEmitter:EventEmitter<any>= new EventEmitter()
+  constructor(private chartService: ChartService, private router:ActivatedRoute) {
     super();
     this.chartService.conventionHistorySubject
       .pipe(takeUntil(this.ngUnSubscribe))
@@ -46,11 +52,21 @@ export class ChartComponent extends BaseComponent implements OnInit, OnChanges {
           this.renderChart();
         }
       });
+
+
+      this.router.params.subscribe(res=>{
+        this.toCurrency = res['to']
+        this.fromCurrency = res['from']
+        this.toCurrencyEmitter.emit(this.toCurrency);
+        this.fromCurrencyEmitter.emit(this.fromCurrency);
+      })
   }
+
+
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.toCurrency)
+    if (this.toCurrency && this.fromCurrency)
       this.chartService.getHistoryForLastYear(
-        environment.base,
+        this.fromCurrency,
         this.toCurrency
       );
   }
@@ -59,8 +75,12 @@ export class ChartComponent extends BaseComponent implements OnInit, OnChanges {
     this.toCurrency = 'USD';
     this.chartService.getHistoryForLastYear(environment.base, this.toCurrency);
   }
+
+
   renderChart() {
-    const myChart = new Chart('lineChart', {
+    this.myChart ? this.myChart.destroy() : '';
+
+    this.myChart = new Chart('lineChart', {
       type: 'line',
       data: {
         datasets: [

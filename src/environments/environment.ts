@@ -8,7 +8,7 @@ export const environment = {
   apiUrl: "http://data.fixer.io/api",
   apiConvertUrl: "https://v6.exchangerate-api.com/v6/",
   apiChartUrl: "https://v6.exchangerate-api.com/v6/",
-  apiKey: "a0774303cc149f98c2d51a33a6727ec5",
+  apiKey: "0e3d2faac7a51c1b80c8fdbc2fd9920e",
   apiKeyForConvert: "9ca75a25dd98dec44409e62f",
   base: "EUR",
 };

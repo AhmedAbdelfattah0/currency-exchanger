@@ -5,7 +5,7 @@
 
     <div class="converter-wrapper">
       <h2>Currency Exchanger!</h2>
-      <app-converter (toCurrencyEmitter)="toCurrency=$event"></app-converter>
+      <app-converter  [toCurrency]="toCurrency" [fromCurrency]="fromCurrency"  (toCurrencyEmitter)="toCurrency=$event"  (fromCurrencyEmitter)="fromCurrency=$event"></app-converter>
       <div class="back-wrapper">
         <a routerLink="/home">More Details &#8702;</a>
       </div>
@@ -15,6 +15,6 @@
 </div>
 <div class="chart-section">
     <div class="chart">
-      <app-chart [toCurrency]="toCurrency"></app-chart>
+      <app-chart [toCurrency]="toCurrency" [fromCurrency]="fromCurrency"  (toCurrencyEmitter)="toCurrency=$event"  (fromCurrencyEmitter)="fromCurrency=$event"></app-chart>
     </div>
   </div>

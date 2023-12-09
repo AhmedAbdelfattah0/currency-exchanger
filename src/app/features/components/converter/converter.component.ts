@@ -1,6 +1,6 @@
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from './../../../shared/services/api.service';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { BaseComponent } from 'src/app/base-components/base.component';
 import { takeUntil } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { takeUntil } from 'rxjs';
   templateUrl: './converter.component.html',
   styleUrls: ['./converter.component.scss']
 })
-export class ConverterComponent extends BaseComponent implements OnInit {
+export class ConverterComponent extends BaseComponent implements OnInit, OnChanges {
   exchangeData: any;
   calculatedConversion: any;
   amount: any = 1;
@@ -24,14 +24,23 @@ export class ConverterComponent extends BaseComponent implements OnInit {
   fromSelectedCurrency: string = 'EUR';
   toSelectedCurrency: string = 'USD';
   @Output()toCurrencyEmitter:EventEmitter<any>= new EventEmitter()
+  @Output()fromCurrencyEmitter:EventEmitter<any>= new EventEmitter()
+
+  @Input() toCurrency: any;
+  @Input() fromCurrency: any;
   constructor(private formBuilder: FormBuilder, private apiService:ApiService) {
     super();
     this.getSymbols()
     this.toCurrencyEmitter.emit(this.toSelectedCurrency)
 
   }
+  ngOnChanges(changes: SimpleChanges): void {
+
+    this.conversionForm.get('fromCurrency')?.setValue(  this.fromCurrency)
+    this.conversionForm.get('toCurrency')?.setValue(  this.toCurrency)
+  }
   conversionForm = new FormGroup({
-    amount: new FormControl('', [Validators.required]),
+    amount: new FormControl('1', [Validators.required]),
     fromCurrency: new FormControl('', [Validators.required]),
     toCurrency: new FormControl('', [Validators.required,
     ]),
@@ -45,7 +54,7 @@ export class ConverterComponent extends BaseComponent implements OnInit {
       (res:any) => {
         let symbolsJson = Object.keys(res?.symbols);
         this.symbols = symbolsJson;
-
+        this.convertCurrency()
        },
 
     );
@@ -57,6 +66,7 @@ export class ConverterComponent extends BaseComponent implements OnInit {
       let fromCurrency = this.conversionForm.get('fromCurrency')?.value;
       let toCurrency = this.conversionForm.get('toCurrency')?.value;
       this.toCurrencyEmitter.emit(toCurrency)
+      this.fromCurrencyEmitter.emit(fromCurrency)
       this.amount = storeAmount
       this.apiService
         .convertCurrency(fromCurrency, toCurrency, storeAmount)

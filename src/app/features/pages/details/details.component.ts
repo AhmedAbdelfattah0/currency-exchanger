@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsComponent implements OnInit {
  toCurrency:any
+ fromCurrency:any
   constructor() { }
 
   ngOnInit(): void {

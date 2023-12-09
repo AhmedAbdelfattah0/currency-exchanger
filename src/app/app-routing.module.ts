@@ -6,6 +6,7 @@ import { DetailsComponent } from './features/pages/details/details.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'details', component: DetailsComponent },
+  { path: 'details/:from/:to', component: DetailsComponent },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' },
